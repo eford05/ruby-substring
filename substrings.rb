@@ -13,12 +13,11 @@ def substrings (str, dictionary)
   # Includes the dictionary value true else false
   includes_substring = str.downcase.include? (i.downcase)
 
-  # If the string does include the substring
-  if includes_substring
-    # Check if hash result contains the value as a key if not add to the hash with occurences as value
-    puts hash_result.key?(i)
+  # Check if hash result contains the value as a key
+  has_key = hash_result.key?(i)
 
-  end
+  # Test occurences
+  puts "#{str.downcase} : #{i.downcase} = #{(str.downcase.scan (i.downcase)).length}" 
 }
 
 return hash_result
