@@ -1,6 +1,6 @@
-dictionary = ["No", "body"]
+dictionary = ["below", "down", "go", "going", "horn", "how", "howdy", "it", "i", "low", "own", "part", "partner", "sit"]
 
-str = "His name was nobody"
+str = "Howdy partner, sit down! How's it going?"
 
 # Method checks dictionary(array) for substring occurences of the string argument
 # returns hash, key => dict(substring) value => occurences
@@ -14,10 +14,15 @@ def substrings (str, dictionary)
   includes_substring = str.downcase.include? (i.downcase)
 
   # Check if hash result contains the value as a key
-  has_key = hash_result.key?(i)
+  has_key = hash_result.key?(i.downcase)
 
-  # Test occurences
-  puts "#{str.downcase} : #{i.downcase} = #{(str.downcase.scan (i.downcase)).length}" 
+  # Track occurences
+  hash_value = (str.downcase.scan (i.downcase)).length
+
+  # If includes substring and hash does not contain the key add key and value to the hash result
+  if includes_substring && !has_key
+    hash_result[i.downcase] = hash_value
+  end
 }
 
 return hash_result
@@ -25,4 +30,4 @@ return hash_result
 end
 
 # Test
-substrings(str, dictionary)
+puts substrings(str, dictionary)
